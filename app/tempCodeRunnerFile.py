@@ -1,0 +1,1 @@
+response_model=List[schemas.Post]
