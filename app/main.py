@@ -1,7 +1,6 @@
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
-from . import models, config
-from .database import engine
 from .routers import post, user, auth, vote
 
 #models.Base.metadata.create_all(bind=engine)
@@ -26,5 +25,5 @@ app.include_router(vote.router)
 
 
 @app.get("/")
-def root():
-    return {"message": "Welcome"}
+async def docs_redirect():
+    return RedirectResponse(url='/docs')
